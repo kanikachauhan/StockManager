@@ -1,0 +1,55 @@
+<AppSettings>:
+    name: 'AppSettings'
+    canvas.before:
+        Color:
+            rgba: 0,0,0,0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 1,1,1,1
+    errorLabel:errorLabel
+    BoxLayout:
+        orientation:'vertical'
+        padding:[50,20,10,50] 
+        spacing:20
+        Label:
+            text: 'Application Settings'
+            color: 1,0.6,0,1 
+            font_size:40
+            bold:True
+            italic:True
+            size_hint_y: None
+            size_hint_x: None
+            height:'50dp'
+            width:'500dp'
+        Label:
+            text:'Change path to save bar codes'
+            color: 1,1,1,1
+            italic: True
+            font_size: 30
+            width: '200dp'
+            height: '50dp'
+        TextInput:
+            id:filepath
+            multiline: False
+            font_size: 20
+            size_hint_x: None
+            size_hint_y: None
+            width: '300dp'
+            height: '50dp'
+            text: root.barCodePath
+        Button:
+            text:'Save'
+            size_hint_x: None
+            size_hint_y: None
+            height: '50dp'
+            width: '150dp'
+            on_press: root.save(filepath.text)
+        Label:
+            id: errorLabel
+            color: 1,1,1,1
+            italic: True
+            font_size: 30
+            width: '200dp'
+            height: '50dp'

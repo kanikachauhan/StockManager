@@ -1,0 +1,28 @@
+<MainLayout>:
+    sm : sm
+    BoxLayout:
+        orientation:'vertical'
+        BoxLayout:
+            size_hint:1,None
+            height:'50dp'
+            Button:
+                text: 'Exit'
+                on_press: app.stop()
+            Button:
+                text: 'Maintain Stock'
+                on_release: sm.current = 'MaintainStock'
+            Button:
+                text: 'Generate Bar Codes'
+                on_release: sm.current = 'GenerateBarCodeWindow'
+            Button:
+                text: 'Settings'
+                on_release: sm.current = 'AppSettings'
+            Button:
+                text: 'Add Entry'
+                on_release : sm.current = 'AddEntry'
+        ScreenManager:
+            id:sm    
+            GenerateBarCodeWindow:
+            AppSettings:
+            AddEntry:
+            MaintainStock:

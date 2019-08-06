@@ -1,0 +1,85 @@
+<MaintainStock>:
+    name: 'MaintainStock'
+    canvas.before:
+        Color:
+            rgba: 0,0,0,0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 1,1,1,1
+    errorLabel:errorLabel   
+    BoxLayout:
+        orientation:'vertical'
+        padding:[30,20,10,10] 
+        Label:
+            text: 'Maintain Stock'
+            color: 1,0.6,0,1 
+            font_size:40
+            bold:True
+            italic:True
+            size_hint_y: None
+            size_hint_x: None
+            height:'50dp'
+            width:'600dp'
+        GridLayout:
+            rows:5
+            cols:2
+            size_hint_x: None
+            size_hint_y: None
+            height: '250dp'
+            width: '500dp'
+            spacing: 20
+            Spinner: 
+                id: brand_spinner 
+                text: "Select Brand"
+                values : root.brandsList
+                on_text: root.populateModelsForBrands(self.text)
+                size_hint:(None, None)
+                height: '40dp'
+                width: '300dp'
+            Spinner: 
+                id: model_spinner
+                text: "Select Model"  
+                values : root.modelsList
+                size_hint:(None, None)
+                height: '40dp'
+                width: '300dp'
+            Label:
+                text: 'Quantity'
+                color: 1,1,1,1
+                italic: True
+                font_size: 20
+                width:'200dp'
+                height:'50dp'
+            TextInput:
+                id: quantity
+                mutliline:False
+                font_size:20
+                text: ''
+                size_hint_x: None
+                size_hint_y: None
+                width:'200dp'
+                height:'50dp'
+            Button:
+                text: 'Add'
+                id: add
+                size_hint_y: None
+                size_hint_x:None
+                height: '48dp'
+                width: '150dp'
+                on_press : root.addValues(brand_spinner.text,model_spinner.text,quantity.text)
+            Button:
+                text: 'Subtract'
+                id: subtract
+                size_hint_x : None
+                size_hint_y : None
+                height : '48dp'
+                width : '150dp'
+                on_press : root.subtractValues(brand_spinner.text,model_spinner.text,quantity.text)
+            Label:
+                id:errorLabel
+                size_hint_x: None
+                size_hint_y: None
+                height: '48dp'
+                width: '150dp'

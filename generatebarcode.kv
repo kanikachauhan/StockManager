@@ -1,0 +1,69 @@
+<GenerateBarCodeWindow>:
+    name: 'GenerateBarCodeWindow'
+    canvas.before:
+        Color:
+            rgba: 0,0,0,0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 1,1,1,1
+    errorLabel: errorLabel
+    sku:sku
+    BoxLayout:
+        orientation:'vertical'
+        padding:[30,20,10,10] 
+        Label:
+            text: 'Dashboard'
+            color: 1,0.6,0,1 
+            font_size:40
+            bold:True
+            italic:True
+            size_hint_y: None
+            size_hint_x: None
+            height:'50dp'
+            width:'600dp'
+        GridLayout:
+            rows:3
+            cols:2
+            size_hint_x: None
+            size_hint_y: None
+            height: '250dp'
+            width: '650dp'
+            spacing:50
+            Label:
+                text:'Enter SKU/s'
+                color: 1,1,1,1
+                italic: True
+                font_size: 20
+                width:'200dp'
+                height:'50dp'
+            TextInput:
+                id:sku
+                mutliline:False
+                font_size:20
+                size_hint_x: None
+                size_hint_y: None
+                width:'200dp'
+                height:'45dp'
+            Button:
+                text:'Generate'
+                size_hint_y: None
+                size_hint_x:None
+                height: '48dp'
+                width: '150dp'
+                on_press : root.generateBarCode()
+            Button:
+                id: filechooserBtn
+                size_hint_y: None
+                size_hint_x:None
+                height: '48dp'
+                width: '150dp'
+                text: 'Browse File'
+                on_press : root.chooseFile()
+            Label:
+                id: errorLabel
+                size_hint_x: None
+                size_hint_y: None
+                height: '48dp'
+                width: '150dp'

@@ -1,0 +1,95 @@
+<AddEntry>:
+    name: 'AddEntry'
+    canvas.before:
+        Color:
+            rgba: 0,0,0,0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 1,1,1,1
+    errorLabel:errorLabel
+    BoxLayout:
+        orientation:'vertical'
+        padding:[50,20,10,10] 
+        spacing:20
+        Label:
+            text: 'Add new brand+model combo'
+            color: 1,0.6,0,1 
+            font_size:40
+            bold:True
+            italic:True
+            size_hint_y: None
+            size_hint_x: None
+            height:'50dp'
+            width:'500dp'
+        GridLayout:
+            rows:5
+            cols:2
+            size_hint_x: None
+            size_hint_y: None
+            height: '250dp'
+            width: '500dp'
+            Label:
+                text : 'Model'
+                color: 1,1,1,1
+                italic: True
+                font_size: 20
+                width:'200dp'
+                height:'50dp'
+            TextInput:
+                id: model
+                text: ''
+                mutliline:False
+                font_size:20
+                size_hint_x: None
+                size_hint_y: None
+                width:'200dp'
+                height:'50dp'
+            Label:
+                text: 'Brand'
+                color: 1,1,1,1
+                italic: True
+                font_size: 20
+                width:'200dp'
+                height:'50dp'
+            TextInput:
+                size_hint_x: None
+                size_hint_y: None
+                id: brand
+                text: ''
+                mutliline:False
+                font_size:20
+                width:'200dp'
+                height:'50dp'
+            Label:
+                text: 'Quantity'
+                color: 1,1,1,1
+                italic: True
+                font_size: 20
+                width:'200dp'
+                height:'50dp'
+            TextInput:
+                id: quantity
+                mutliline:False
+                font_size:20
+                text: ''
+                size_hint_x: None
+                size_hint_y: None
+                width:'200dp'
+                height:'50dp'
+            Button:
+                text: 'Save'
+                size_hint_y: None
+                size_hint_x:None
+                height: '48dp'
+                width: '150dp'
+                on_press: root.saveEntry(brand.text,model.text,quantity.text)
+            Label:
+                id:errorLabel
+                color: 1,1,1,1
+                italic: True
+                font_size: 20
+                width:'200dp'
+                height:'50dp'
+                text: ''
