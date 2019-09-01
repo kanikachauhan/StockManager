@@ -4,6 +4,7 @@ import configparser
 from kivy.properties import StringProperty
 from database import DatabaseManagement
 
+
 Builder.load_file('addEntry.kv')
 class AddEntry(Screen):
     db = DatabaseManagement()

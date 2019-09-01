@@ -23,15 +23,6 @@ class MaintainStock(Screen):
     brandsList = ListProperty()
     modelsList = ListProperty()
 
-    def __init__(self, **kwargs):
-        super(MaintainStock,self).__init__(**kwargs)
-        brands = self.db.fetchBrands()
-        dbbrands = [t[0] for t in brands]
-        self.brandsList = dbbrands
-        
-    def build(self):
-        pass    
-
     def populateModelsForBrands(self,brand):
         models = self.db.getModelsForBrand(brand)
         dbmodels = [t[0] for t in models]

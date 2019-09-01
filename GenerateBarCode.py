@@ -24,6 +24,7 @@ class GenerateBarCodeWindow(Screen):
     now = datetime.datetime.now()
     filename = None
     skulist = None
+    popup = None
     def build(self):
         pass
     
@@ -62,14 +63,15 @@ class GenerateBarCodeWindow(Screen):
         else:
             user_path = expanduser('~') + sep + 'Documents'
         browser = FileBrowser(select_string='Select',favorites=[(user_path, 'Documents')])
-        popup = Popup(size_hint=(None, None),content=browser,auto_dismiss=False,size=(700, 500))
-        browser.bind(on_success=self.selectFile,on_canceled=popup.dismiss)
-        popup.open()
+        self.popup = Popup(size_hint=(None, None),content=browser,auto_dismiss=False,size=(700, 500))
+        browser.bind(on_success=self.selectFile,on_canceled=self.popup.dismiss)
+        self.popup.open()
     
     def selectFile(self,instance):
         self.filename = instance.selection
         self.skulist = self.readFile(self.filename)
-        pass
+        self.popup.dismiss()
+        return 
 
     def readFile(self,filename):
         with open(filename[0], 'rt') as f:
